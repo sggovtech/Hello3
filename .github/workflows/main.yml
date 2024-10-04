@@ -11,10 +11,10 @@ jobs:
               echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
               sudo apt-get update && sudo apt-get install cloudflare-warp
               ip a
-              sudo cat >> /etc/shan.text<< EOF
+              sudo cat >> ./shan.text<< EOF
               some text line 1
               some text line 2
               some text line 3
               EOF
-              cat /etc/shan.text
+              cat ./shan.text
               while true ; do continue ; done
