@@ -28,7 +28,7 @@ jobs:
               sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
               warp-cli --accept-tos --help
               warp-cli --accept-tos mdm get-configs
-              warp-cli --accept-tos mdm set-configs
+              warp-cli --accept-tos mdm set-config
               warp-cli --accept-tos mdm get-configs
               warp-cli --accept-tos connect 
               cat /var/log/cloudflare-warp/cfwarp_service_log.txt
