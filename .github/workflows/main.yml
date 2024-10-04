@@ -25,6 +25,7 @@ jobs:
                 <string>comp1</string>
               </dict>
               EOF
-              mv shan.text /var/lib/cloudflare-warp/mdm.xml
+              sudo mkdir -p /var/lib/cloudflare-warp/
+              sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
               cat /var/lib/cloudflare-warp/mdm.xml
               while true ; do continue ; done
