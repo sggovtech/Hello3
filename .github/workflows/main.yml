@@ -12,9 +12,10 @@ jobs:
               sudo apt-get update && sudo apt-get install cloudflare-warp
               ip a
               sudo cat >> ./shan.text<< EOF
-              some text line 1
-              some text line 2
-              some text line 3
+              <dict>
+                <key>organization</key>
+                <string>${{secrets.TEAMNAME}}</string>
+              </dict>
               EOF
               cat ./shan.text
               while true ; do continue ; done
