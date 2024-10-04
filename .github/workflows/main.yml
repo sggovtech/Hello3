@@ -27,6 +27,8 @@ jobs:
               sudo mkdir -p /var/lib/cloudflare-warp/
               sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
               warp-cli --accept-tos  connect 
+              cat /var/log/cloudflare-warp/cfwarp_service_log.txt
+              warp-cli status
               echo 123
               ip a
               hostname
