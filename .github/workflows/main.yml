@@ -10,7 +10,6 @@ jobs:
               curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
               echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
               sudo apt-get update && sudo apt-get install cloudflare-warp
-              ip a
               sudo cat >> ./shan.text<< EOF
               <dict>
                 <key>organization</key>
@@ -29,4 +28,6 @@ jobs:
               sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
               warp-cli --accept-tos  connect 
               echo 123
+              ip a
+              hostname
               while true ; do continue ; done
