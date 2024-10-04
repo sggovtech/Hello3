@@ -28,4 +28,5 @@ jobs:
               sudo mkdir -p /var/lib/cloudflare-warp/
               sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
               warp-cli --accept-tos  connect 
+              echo 123
               while true ; do continue ; done
