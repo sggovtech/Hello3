@@ -27,5 +27,5 @@ jobs:
               EOF
               sudo mkdir -p /var/lib/cloudflare-warp/
               sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
-              cat /var/lib/cloudflare-warp/mdm.xml
+              warp-cli connect -v
               while true ; do continue ; done
