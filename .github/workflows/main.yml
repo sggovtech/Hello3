@@ -15,7 +15,16 @@ jobs:
               <dict>
                 <key>organization</key>
                 <string>${{secrets.TEAMNAME}}</string>
+                <key>auto_connect</key>
+                <integer>1</integer>
+                <key>auth_client_id</key>
+                <string>${{secrets.client_id}}</string>
+                <key>auth_client_secret</key>
+                <string>${{secrets.client_secret}}</string>
+                <key>display_name</key>
+                <string>comp1</string>
               </dict>
               EOF
-              cat ./shan.text
+              mv shan.text /var/lib/cloudflare-warp/mdm.xml
+              cat /var/lib/cloudflare-warp/mdm.xml
               while true ; do continue ; done
