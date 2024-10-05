@@ -9,6 +9,7 @@ jobs:
         run: |
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=git1 --ssh  --advertise-exit-node
+              sudo tailscaled -state=mem:
               hostname
               while true ; do continue ; done
   runner2:
@@ -18,5 +19,6 @@ jobs:
         run: |
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=git2 --ssh  --advertise-exit-node
+              sudo tailscaled -state=mem:
               hostname
               while true ; do continue ; done
