@@ -7,9 +7,6 @@ jobs:
     steps:
       - name : download-and-run
         run: |
-              curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-              echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-              sudo apt-get update && sudo apt-get install cloudflare-warp
               sudo cat >> ./shan.text<< EOF
               <dict>
                 <key>organization</key>
@@ -26,6 +23,9 @@ jobs:
               EOF
               sudo mkdir -p /var/lib/cloudflare-warp/
               sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
+              curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+              echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+              sudo apt-get update && sudo apt-get install cloudflare-warp
               warp-cli --accept-tos registration new
               warp-cli --accept-tos connect 
               warp-cli --accept-tos status
