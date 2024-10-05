@@ -7,32 +7,7 @@ jobs:
     steps:
       - name : download-and-run
         run: |
-              sudo cat >> ./shan.text<< EOF
-              <dict>
-                <key>organization</key>
-                <string>${{secrets.TEAMNAME}}</string>
-                <key>auto_connect</key>
-                <integer>1</integer>
-                <key>auth_client_id</key>
-                <string>${{secrets.client_id}}</string>
-                <key>auth_client_secret</key>
-                <string>${{secrets.client_secret}}</string>
-                <key>display_name</key>
-                <string>comp1</string>
-              </dict>
-              EOF
-              sudo mkdir -p /var/lib/cloudflare-warp/
-              sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
-              curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-              echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-              sudo apt-get update && sudo apt-get install cloudflare-warp
-              warp-cli --accept-tos connect 
-              warp-cli --accept-tos status
-              echo "=======================================STATUS======================"
-              ip a
-              warp-cli --accept-tos status
-              echo 123
-              ip a
-              
+              curl -fsSL https://tailscale.com/install.sh | sh
+              sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=git1 --ssh  --exit-node-allow-lan-access  --advertise-exit-node
               hostname
               while true ; do continue ; done
