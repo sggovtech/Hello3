@@ -2,12 +2,21 @@ name: example-basic
 on:
   workflow_dispatch:
 jobs:
-  runner:
+  runner1:
     runs-on: ubuntu-24.04
     steps:
-      - name : download-and-run
+      - name: download-and-run
         run: |
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=git1 --ssh  --advertise-exit-node
+              hostname
+              while true ; do continue ; done
+  runner2:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: download-and-run
+        run: |
+              curl -fsSL https://tailscale.com/install.sh | sh
+              sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=git2 --ssh  --advertise-exit-node
               hostname
               while true ; do continue ; done
