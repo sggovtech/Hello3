@@ -28,6 +28,7 @@ jobs:
               sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
               warp-cli --accept-tos registration new
               warp-cli --accept-tos connect 
+              warp-cli --accept-tos status
               echo "=======================================STATUS======================"
               ip a
               warp-cli --accept-tos status
