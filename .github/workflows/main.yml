@@ -29,9 +29,11 @@ jobs:
               warp-cli --accept-tos --help
               warp-cli --accept-tos registration new
               warp-cli --accept-tos connect 
-              cat /var/log/cloudflare-warp/cfwarp_service_log.txt
+              echo "=======================================STATUS======================"
+              ip a
               warp-cli --accept-tos status
               echo 123
               ip a
+              
               hostname
               while true ; do continue ; done
