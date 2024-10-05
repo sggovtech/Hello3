@@ -8,7 +8,8 @@ jobs:
       - name: download-and-run
         run: |
               curl -fsSL https://tailscale.com/install.sh | sh
-              sudo tailscaled -state=mem:
+              sudo tee -a /etc/default/tailscaled <<<'FLAGS="--state=mem:"'
+              sudo systemctl restart tailscaled
               sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=git1 --ssh  --advertise-exit-node
               hostname
               while true ; do continue ; done
@@ -18,7 +19,8 @@ jobs:
       - name: download-and-run
         run: |
               curl -fsSL https://tailscale.com/install.sh | sh
-              sudo tailscaled -state=mem:
+              sudo tee -a /etc/default/tailscaled <<<'FLAGS="--state=mem:"'
+              sudo systemctl restart tailscaled
               sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=git2 --ssh  --advertise-exit-node
               hostname
               while true ; do continue ; done
