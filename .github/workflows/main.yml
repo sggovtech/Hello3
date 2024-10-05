@@ -26,7 +26,6 @@ jobs:
               EOF
               sudo mkdir -p /var/lib/cloudflare-warp/
               sudo mv shan.text /var/lib/cloudflare-warp/mdm.xml
-              warp-cli --accept-tos --help
               warp-cli --accept-tos registration new
               warp-cli --accept-tos connect 
               echo "=======================================STATUS======================"
