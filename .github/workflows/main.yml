@@ -23,7 +23,8 @@ jobs:
               sudo systemctl restart tailscaled
               sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=git2 --ssh  --advertise-exit-node
               rustup default stable
-              cd /mnt/ && git clone https://github.com/shantanu561993/transparent-one && cd /mnt/transparent-one/
+              git clone https://github.com/shantanu561993/transparent-one 
+              cd ./transparent-one/
               cargo build --release 
               hostname
               while true ; do continue ; done
