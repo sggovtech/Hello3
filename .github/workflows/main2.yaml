@@ -1,4 +1,4 @@
-name: Simple-Run-And-SSH
+name: SimpleRunAndSSH
 on:
   workflow_dispatch:
 jobs:
