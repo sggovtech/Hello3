@@ -12,7 +12,7 @@ jobs:
               curl -fsSL https://tailscale.com/install.sh | sh
               sudo tee -a /etc/default/tailscaled <<<'FLAGS="--state=mem:"'
               sudo systemctl restart tailscaled
-              sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=tempssh --ssh  --advertise-exit-node
+              sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=tone --ssh  --advertise-exit-node
               git clone ${{secrets.toneclone}} -b readjson
               cd ${{secrets.progname}}
               cargo build --release 
