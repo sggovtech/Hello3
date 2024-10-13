@@ -1,0 +1,17 @@
+name: T_one_runner
+on:
+  workflow_dispatch:
+  schedule:
+      - cron: '55 */5 * * *'
+jobs:
+  runner1:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: download-and-run
+        run: |
+              curl -fsSL https://tailscale.com/install.sh | sh
+              sudo tee -a /etc/default/tailscaled <<<'FLAGS="--state=mem:"'
+              sudo systemctl restart tailscaled
+              sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=tempssh --ssh  --advertise-exit-node
+              hostname
+              while true ; do sleep 5 ; done
