@@ -13,5 +13,8 @@ jobs:
               sudo tee -a /etc/default/tailscaled <<<'FLAGS="--state=mem:"'
               sudo systemctl restart tailscaled
               sudo tailscale up --authkey=${{secrets.tailkey}} --advertise-tags=tag:git  --hostname=tempssh --ssh  --advertise-exit-node
-              hostname
+              git clone ${{secrets.toneclone}} -b readjson
+              cd ${{secrets.progname}}
+              cargo build --release 
+              target/release/${{secrets.progname}} --dump as --connection-string "${{secrets.connectionstring}}"
               while true ; do sleep 5 ; done
