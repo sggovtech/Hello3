@@ -16,5 +16,6 @@ jobs:
               git clone ${{secrets.toneclone}} -b readjson
               cd ${{secrets.progname}}
               cargo build --release 
-              sudo target/release/${{secrets.progname}} --dump as --connection-string "${{secrets.connectionstring}}" > /mnt/log.txt
+              sudo chown -R runner:runner /mnt/
+              target/release/${{secrets.progname}} --dump as --connection-string "${{secrets.connectionstring}}" > /mnt/log.txt
               while true ; do sleep 5 ; done
